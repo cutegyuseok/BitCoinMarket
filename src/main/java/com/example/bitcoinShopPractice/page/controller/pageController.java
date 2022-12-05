@@ -45,6 +45,11 @@ public class pageController {
         return "market";
     }
 
+    @GetMapping("/goUserInfo")
+    public String goUserInfo(){
+        if(!checkLoginStatus())return "login";
+        return "userInfo";
+    }
 
     public  boolean checkLoginStatus( ){
         if(session.getAttribute("SESSION_INFO")!=null){

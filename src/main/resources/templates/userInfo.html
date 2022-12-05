@@ -27,8 +27,6 @@
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
-
-    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 </head>
 <!-- body -->
 
@@ -39,14 +37,14 @@
     </div>
     <!-- end loader -->
     <div id="mySidepanel" class="sidepanel" style="font-family: 'Jua', sans-serif;">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
         <a href="/">홈으로</a>
         <a th:if="${session.SESSION_INFO==null}" href="/goSignup">가입하기</a>
         <a th:if="${session.SESSION_INFO==null}" href="/goLogin">로그인하기</a>
         <a th:unless="${session.SESSION_INFO==null}" href="/logout">로그아웃</a>
-        <a class="active" href="/goPay">충전하기</a>
+        <a href="/goPay">충전하기</a>
         <a href="/goMarket">거래하기</a>
-        <a href="/goHistory">거래내역</a>
+        <a class="active" href="/goHistory">거래내역</a>
     </div>
     <!-- header -->
     <header  style="font-family: 'Jua', sans-serif;">
@@ -83,22 +81,9 @@
     </header>
     <!-- end header -->
     <div class="contact"  style="font-family: 'Jua', sans-serif;">
-        <div class="container" style="text-align: center;">
+        <h1 style="text-align: center; font-size: 35px;">사용자 정보</h1>
+        <div class="container">
 
-
-
-           <h1 style="font-size:35px; padding-bottom: 35px;">카카오페이</h1><br>
-                <label class="box-radio-input"><input type="radio" name="cp_item" value="5000"><span style="color:white;">5,000원</span></label>
-                <label class="box-radio-input"><input type="radio" name="cp_item" value="10000"><span style="color:white;">10,000원</span></label><br>
-                <label class="box-radio-input"><input type="radio" name="cp_item" value="15000"><span style="color:white;">15,000원</span></label>
-                <label class="box-radio-input"><input type="radio" name="cp_item" value="20000"><span style="color:white;">20,000원</span></label><br>
-                <label class="box-radio-input"><input type="radio" name="cp_item" value="25000"><span style="color:white;">25,000원</span></label>
-                <label class="box-radio-input"><input type="radio" name="cp_item" value="30000"><span style="color:white;">30,000원</span></label><br>
-                <label class="box-radio-input"><input type="radio" name="cp_item" value="35000"><span style="color:white;">35,000원</span></label>
-                <label class="box-radio-input"><input type="radio" name="cp_item" value="40000"><span style="color:white;">40,000원</span></label><br>
-                <label class="box-radio-input"><input type="radio" name="cp_item" value="50000"><span style="color:white;">50,000원</span></label><br>
-                <p  style="color: #ac2925; margin-top: 30px">카카오페이의 최소 충전금액은 5,000원이며 <br/>최대 충전금액은 50,000원 입니다.</p>
-                <button type="button" class="btn btn-lg btn-block  btn-custom" id="charge_kakao" style="color:white;">충 전 하 기</button>
 
 
         </div>
@@ -173,59 +158,11 @@
             </div>
         </div>
     </footer>
-
-    <!-- end footer -->
-    <!-- Javascript files-->
-    <script src="js/jquery.min.js "></script>
-    <script src="js/bootstrap.bundle.min.js "></script>
-    <script src="js/jquery-3.0.0.min.js "></script>
-    <script src="js/custom.js "></script>
-    <script>
-        $('#charge_kakao').click(function () {
-            // getter
-            var IMP = window.IMP;
-            IMP.init('imp62483870');
-            var money = $('input[name="cp_item"]:checked').val();
-            console.log(money);
-
-            IMP.request_pay({
-                pg: 'kakaopay',
-                merchant_uid: 'merchant_' + new Date().getTime(),
-                name: '주문명 : 코인거래소충전',
-                amount: money,
-                buyer_email: 'iamport@siot.do',
-                buyer_name: '구매자이름',
-                buyer_tel: '010-1234-5678',
-                buyer_addr: '인천광역시 부평구',
-                buyer_postcode: '123-456'
-            }, function (rsp) {
-                console.log(rsp);
-                if (rsp.success) {
-                    var msg = '결제가 완료되었습니다.';
-                    msg += '고유ID : ' + rsp.imp_uid;
-                    msg += '상점 거래ID : ' + rsp.merchant_uid;
-                    msg += '결제 금액 : ' + rsp.paid_amount;
-                    msg += '카드 승인번호 : ' + rsp.apply_num;
-                    $.ajax({
-                        type: "GET",
-                        url: "/point", //충전 금액값을 보낼 url 설정
-                        data: {
-                            "amount" : money,
-                            "uid":rsp.imp_uid
-                        },
-                    });
-
-                    alert('결제에 성공하였습니다.');
-                } else {
-                    var msg = '결제에 실패하였습니다.';
-                    msg += '에러내용 : ' + rsp.error_msg;
-
-                    alert(msg);
-                }
-                document.location.href="/goPay"; //alert창 확인 후 이동할 url 설정
-            });
-        });
-    </script>
-
+      <!-- end footer -->
+      <!-- Javascript files-->
+      <script src="js/jquery.min.js "></script>
+      <script src="js/bootstrap.bundle.min.js "></script>
+      <script src="js/jquery-3.0.0.min.js "></script>
+      <script src="js/custom.js "></script>
    </body>
 </html>
