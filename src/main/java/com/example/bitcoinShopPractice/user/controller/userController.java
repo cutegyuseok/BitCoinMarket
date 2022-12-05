@@ -4,6 +4,7 @@ import com.example.bitcoinShopPractice.user.DTO.userDTO;
 import com.example.bitcoinShopPractice.user.service.userService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -33,6 +34,12 @@ public class userController {
         }else {
             return "login";
         }
+    }
+
+    @GetMapping("/point")
+    public String point(@RequestParam HashMap<String,String> pointInfo){
+        System.out.println(pointInfo.toString());
+        return "pay";
     }
 
 }

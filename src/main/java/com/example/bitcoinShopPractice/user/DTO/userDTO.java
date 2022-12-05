@@ -6,7 +6,7 @@ public class userDTO {
     private String phone;
     private String address;
     private String detail;
-    private String inDate;
+
 
     public userDTO(String email, String name, String phone, String address, String detail) {
         this.email = email;
