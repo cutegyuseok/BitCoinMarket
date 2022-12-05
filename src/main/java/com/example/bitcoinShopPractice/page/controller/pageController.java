@@ -1,4 +1,4 @@
-package com.example.bitcoinshopprac.page.controller;
+package com.example.bitcoinShopPractice.page.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -47,7 +47,7 @@ public class pageController {
 
 
     public  boolean checkLoginStatus( ){
-        if(session.getAttribute("SESSION_ID")!=null){
+        if(session.getAttribute("SESSION_INFO")!=null){
             return true;
         }else return false;
     }

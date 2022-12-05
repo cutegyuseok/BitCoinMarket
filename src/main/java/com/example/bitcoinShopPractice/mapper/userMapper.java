@@ -1,4 +1,4 @@
-package com.example.bitcoinshopprac.mapper;
+package com.example.bitcoinShopPractice.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -9,6 +9,6 @@ public interface userMapper {
 
     public int signup(HashMap<String,String> userInfo);
 
-    public String login(HashMap<String,String> userInfo);
+    public HashMap<String,String> login(HashMap<String,String> userInfo);
 
 }

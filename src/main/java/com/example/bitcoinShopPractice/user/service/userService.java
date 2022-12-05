@@ -1,6 +1,7 @@
-package com.example.bitcoinshopprac.user.service;
+package com.example.bitcoinShopPractice.user.service;
 
-import com.example.bitcoinshopprac.user.repository.userRepository;
+import com.example.bitcoinShopPractice.user.DTO.userDTO;
+import com.example.bitcoinShopPractice.user.repository.userRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,9 +23,11 @@ public class userService {
         }
     }
 
-    public String login(HashMap<String,String> userInfo){
+    public userDTO login(HashMap<String,String> userInfo){
         try {
-            return userRepository.login(userInfo);
+            HashMap<String,String> user = userRepository.login(userInfo);
+            System.out.println(user.toString());
+            return new userDTO(user.get("email"),user.get("name"),user.get("phone"),user.get("address"),user.get("detail"),user.get("indate"));
         }catch (Exception e){
             return null;
         }

@@ -1,4 +1,4 @@
-package com.example.bitcoinshopprac;
+package com.example.bitcoinShopPractice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

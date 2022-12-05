@@ -1,11 +1,9 @@
-package com.example.bitcoinshopprac.user.repository;
+package com.example.bitcoinShopPractice.user.repository;
 
-import com.example.bitcoinshopprac.mapper.userMapper;
+import com.example.bitcoinShopPractice.mapper.userMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.sql.SQLException;
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.HashMap;
 
 @Repository
@@ -18,7 +16,7 @@ public class userRepository {
             return userMapper.signup(userInfo);
     }
 
-    public String login(HashMap<String,String> userInfo){
+    public HashMap<String,String> login(HashMap<String,String> userInfo){
         return userMapper.login(userInfo);
     }
 }
