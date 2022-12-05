@@ -18,6 +18,8 @@ public class userController {
     @Autowired
     userService userService;
 
+    @Autowired
+    HttpSession session;
     @PostMapping("/signup")
     public String signup(@RequestParam HashMap<String,String> userInfo){
         if(userService.signup(userInfo)>0){
@@ -26,7 +28,7 @@ public class userController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestParam HashMap<String,String> userInfo, HttpSession session){
+    public String login(@RequestParam HashMap<String,String> userInfo){
         userDTO userDTO = userService.login(userInfo);
         if(userDTO!=null){
         session.setAttribute("SESSION_INFO",userDTO);
@@ -38,8 +40,17 @@ public class userController {
 
     @GetMapping("/point")
     public String point(@RequestParam HashMap<String,String> pointInfo){
-        System.out.println(pointInfo.toString());
+        userDTO userDTO = (userDTO)session.getAttribute("SESSION_INFO");
+        if(userService.charge(pointInfo,userDTO.getEmail())){
+            System.out.println("charge success");
+        }
         return "pay";
+    }
+
+    @GetMapping("/logout")
+    public String logout(){
+        session.setAttribute("SESSION_INFO",null);
+        return "index";
     }
 
 }

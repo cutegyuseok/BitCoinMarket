@@ -33,4 +33,14 @@ public class userService {
         }
     }
 
+    public boolean charge(HashMap<String,String> chargeInfo,String email){
+        chargeInfo.put("email",email);
+        try{
+            return userRepository.charge(chargeInfo)>0;
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 }

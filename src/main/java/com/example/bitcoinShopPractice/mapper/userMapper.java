@@ -11,4 +11,6 @@ public interface userMapper {
 
     public HashMap<String,String> login(HashMap<String,String> userInfo);
 
+    public int charge(HashMap<String,String> chargeInfo);
+
 }

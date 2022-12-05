@@ -12,6 +12,9 @@
         select * from member where email= #{email} AND password = #{password}
     </select>
 
+    <insert id="charge" parameterType="HashMap">
+        insert into payment (email,amount,uid) values ((#{email}),(#{amount}),(#{uid}));
+    </insert>
 
 
 </mapper>

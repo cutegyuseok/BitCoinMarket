@@ -19,4 +19,8 @@ public class userRepository {
     public HashMap<String,String> login(HashMap<String,String> userInfo){
         return userMapper.login(userInfo);
     }
+
+    public int charge(HashMap<String,String> chargeInfo){
+        return userMapper.charge(chargeInfo);
+    }
 }
