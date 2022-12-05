@@ -6,10 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @MapperScan(value={"com.example.bitcoinShopPractice.mapper"})
-public class BitcoinShopPracticeApplication {
+public class BitCoinShopPracApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(BitcoinShopPracticeApplication.class, args);
+        SpringApplication.run(BitCoinShopPracApplication.class, args);
     }
 
 }

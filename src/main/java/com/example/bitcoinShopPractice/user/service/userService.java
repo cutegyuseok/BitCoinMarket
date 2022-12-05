@@ -26,10 +26,11 @@ public class userService {
     public userDTO login(HashMap<String,String> userInfo){
         try {
             HashMap<String,String> user = userRepository.login(userInfo);
-            System.out.println(user.toString());
-            return new userDTO(user.get("email"),user.get("name"),user.get("phone"),user.get("address"),user.get("detail"),user.get("indate"));
+            return new userDTO(user.get("email"),user.get("name"),user.get("phone"),user.get("address"),user.get("detail"));
         }catch (Exception e){
+            e.printStackTrace();
             return null;
         }
     }
+
 }

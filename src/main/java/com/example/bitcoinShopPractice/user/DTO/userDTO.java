@@ -8,13 +8,12 @@ public class userDTO {
     private String detail;
     private String inDate;
 
-    public userDTO(String email, String name, String phone, String address, String detail, String inDate) {
+    public userDTO(String email, String name, String phone, String address, String detail) {
         this.email = email;
         this.name = name;
         this.phone = phone;
         this.address = address;
         this.detail = detail;
-        this.inDate = inDate;
     }
 
     public String getEmail() {
@@ -57,11 +56,14 @@ public class userDTO {
         this.detail = detail;
     }
 
-    public String getInDate() {
-        return inDate;
-    }
-
-    public void setInDate(String inDate) {
-        this.inDate = inDate;
+    @Override
+    public String toString() {
+        return "userDTO{" +
+                "email='" + email + '\'' +
+                ", name='" + name + '\'' +
+                ", phone='" + phone + '\'' +
+                ", address='" + address + '\'' +
+                ", detail='" + detail + '\'' +
+                '}';
     }
 }
