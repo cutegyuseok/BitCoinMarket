@@ -13,13 +13,13 @@ public class UserService {
     @Autowired
     UserRepository userRepository;
 
-    public int signup(HashMap<String, String> userInfo) {
+    public boolean signup(HashMap<String, String> userInfo) {
 
         try {
-            userRepository.signup(userInfo);
-            return 1;
+            return userRepository.signup(userInfo)>0;
+
         }catch (Exception e){
-            return -1;
+            return false;
         }
     }
 

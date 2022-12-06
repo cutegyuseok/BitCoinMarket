@@ -23,7 +23,7 @@ public class UserController {
     HttpSession session;
     @PostMapping("/signup")
     public String signup(@RequestParam HashMap<String,String> userInfo){
-        if(userService.signup(userInfo)>0){
+        if(userService.signup(userInfo)){
             return "index";
         }else return "signup";
     }
