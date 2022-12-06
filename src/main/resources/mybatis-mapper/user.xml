@@ -27,5 +27,9 @@
     <select id="getBuyCoin" parameterType="String" resultType="double">
         select SUM(amount) from coin where email=#{email} AND status ='buy'
     </select>
+    
+    <select id="getUserCoinInfo" parameterType="String" resultType="HashMap">
+        select name , AVG(price), sum(answer) from coin where email=(#{email}) group by name;
+    </select>
 
 </mapper>

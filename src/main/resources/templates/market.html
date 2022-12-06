@@ -127,12 +127,13 @@
     <!-- end loader -->
     <div id="mySidepanel" class="sidepanel" style="font-family: 'Jua', sans-serif;">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-        <a class="active" href="/">홈으로</a>
+        <a href="/">홈으로</a>
         <a th:if="${session.SESSION_INFO==null}" href="/goSignup">가입하기</a>
         <a th:if="${session.SESSION_INFO==null}" href="/goLogin">로그인하기</a>
         <a th:unless="${session.SESSION_INFO==null}" href="/logout">로그아웃</a>
         <a href="/goPay">충전하기</a>
-        <a class="active" href="/goMarket">거래하기</a>
+        <a class="active" href="/goMarket">구매하기</a>
+        <a href="/goSell">판매하기</a>
         <a href="/goHistory">거래내역</a>
     </div>
     <!-- header -->

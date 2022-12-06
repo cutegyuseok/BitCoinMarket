@@ -73,4 +73,8 @@ public class UserController {
         return "market";
     }
 
+    @GetMapping("/goSell")
+    public String goSell(){
+        return "sell";
+    }
 }
