@@ -5,7 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 import java.util.HashMap;
 
 @Mapper
-public interface functionMapper {
+public interface FunctionMapper {
 
     public int requestCall(HashMap<String,String> requestInfo);
 

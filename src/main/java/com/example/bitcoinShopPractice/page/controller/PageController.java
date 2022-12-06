@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import javax.servlet.http.HttpSession;
 
 @Controller
-public class pageController {
+public class PageController {
     @Autowired
     HttpSession session;
 
@@ -43,12 +43,6 @@ public class pageController {
     public String goMarket(){
         if(!checkLoginStatus())return "login";
         return "market";
-    }
-
-    @GetMapping("/goUserInfo")
-    public String goUserInfo(){
-        if(!checkLoginStatus())return "login";
-        return "userInfo";
     }
 
     public  boolean checkLoginStatus( ){

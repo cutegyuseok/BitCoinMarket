@@ -1,16 +1,16 @@
 package com.example.bitcoinShopPractice.nonLoginFunction.service;
 
-import com.example.bitcoinShopPractice.nonLoginFunction.repository.functionRepository;
+import com.example.bitcoinShopPractice.nonLoginFunction.repository.FunctionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 
 @Service
-public class functionService {
+public class FunctionService {
 
     @Autowired
-    functionRepository functionRepository;
+    FunctionRepository functionRepository;
 
     public boolean requestCall(HashMap<String,String> requestInfo){
         try{

@@ -1,19 +1,29 @@
 package com.example.bitcoinShopPractice.user.DTO;
 
-public class userDTO {
+public class UserDTO {
     private String email;
     private String name;
     private String phone;
     private String address;
     private String detail;
+    private int money;
 
 
-    public userDTO(String email, String name, String phone, String address, String detail) {
+    public UserDTO(String email, String name, String phone, String address, String detail) {
         this.email = email;
         this.name = name;
         this.phone = phone;
         this.address = address;
         this.detail = detail;
+    }
+
+    public UserDTO(String email, String name, String phone, String address, String detail, int money) {
+        this.email = email;
+        this.name = name;
+        this.phone = phone;
+        this.address = address;
+        this.detail = detail;
+        this.money = money;
     }
 
     public String getEmail() {
@@ -56,6 +66,14 @@ public class userDTO {
         this.detail = detail;
     }
 
+    public int getMoney() {
+        return money;
+    }
+
+    public void setMoney(int money) {
+        this.money = money;
+    }
+
     @Override
     public String toString() {
         return "userDTO{" +
@@ -64,6 +82,7 @@ public class userDTO {
                 ", phone='" + phone + '\'' +
                 ", address='" + address + '\'' +
                 ", detail='" + detail + '\'' +
+                ", money=" + money +
                 '}';
     }
 }

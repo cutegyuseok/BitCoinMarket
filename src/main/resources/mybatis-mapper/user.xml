@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.example.bitcoinShopPractice.mapper.userMapper">
+<mapper namespace="com.example.bitcoinShopPractice.mapper.UserMapper">
 
     <insert id="signup" parameterType="java.util.HashMap">
         insert into member (email,password,name,phone,address,detail)
@@ -16,5 +16,16 @@
         insert into payment (email,amount,uid) values ((#{email}),(#{amount}),(#{uid}));
     </insert>
 
+    <select id="getUserPayment" parameterType="String" resultType="long">
+        select SUM(amount) from payment where email=#{email}
+    </select>
+    
+    <insert id="buyCoin" parameterType="HashMap">
+        insert into coin (id,name,price,answer,email,amount,status) values ((#{id}),(#{name}),(#{price}),(#{answer}),(#{email}),(#{amount}),'buy');
+    </insert>
+
+    <select id="getBuyCoin" parameterType="String" resultType="double">
+        select SUM(amount) from coin where email=#{email} AND status ='buy'
+    </select>
 
 </mapper>

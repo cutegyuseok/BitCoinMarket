@@ -1,16 +1,16 @@
 package com.example.bitcoinShopPractice.user.repository;
 
-import com.example.bitcoinShopPractice.mapper.userMapper;
+import com.example.bitcoinShopPractice.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
 
 @Repository
-public class userRepository {
+public class UserRepository {
 
     @Autowired
-    userMapper userMapper;
+    UserMapper userMapper;
 
     public int signup(HashMap<String,String> userInfo){
             return userMapper.signup(userInfo);
@@ -23,4 +23,17 @@ public class userRepository {
     public int charge(HashMap<String,String> chargeInfo){
         return userMapper.charge(chargeInfo);
     }
+
+    public long getUserPayment(String email){
+        return userMapper.getUserPayment(email);
+    }
+
+    public int buyCoin(HashMap<String,String> buyInfo){
+        return userMapper.buyCoin(buyInfo);
+    }
+
+    public double getBuyCoin(String email){
+        return userMapper.getBuyCoin(email);
+    }
+
 }

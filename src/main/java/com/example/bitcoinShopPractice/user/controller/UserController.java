@@ -1,9 +1,10 @@
 package com.example.bitcoinShopPractice.user.controller;
 
-import com.example.bitcoinShopPractice.user.DTO.userDTO;
-import com.example.bitcoinShopPractice.user.service.userService;
+import com.example.bitcoinShopPractice.user.DTO.UserDTO;
+import com.example.bitcoinShopPractice.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,11 +13,11 @@ import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 
 @Controller
-public class userController {
+public class UserController {
 
 
     @Autowired
-    userService userService;
+    UserService userService;
 
     @Autowired
     HttpSession session;
@@ -29,7 +30,7 @@ public class userController {
 
     @PostMapping("/login")
     public String login(@RequestParam HashMap<String,String> userInfo){
-        userDTO userDTO = userService.login(userInfo);
+        UserDTO userDTO = userService.login(userInfo);
         if(userDTO!=null){
         session.setAttribute("SESSION_INFO",userDTO);
         return "index";
@@ -40,7 +41,7 @@ public class userController {
 
     @GetMapping("/point")
     public String point(@RequestParam HashMap<String,String> pointInfo){
-        userDTO userDTO = (userDTO)session.getAttribute("SESSION_INFO");
+        UserDTO userDTO = (UserDTO)session.getAttribute("SESSION_INFO");
         if(userService.charge(pointInfo,userDTO.getEmail())){
             System.out.println("charge success");
         }
@@ -51,6 +52,25 @@ public class userController {
     public String logout(){
         session.setAttribute("SESSION_INFO",null);
         return "index";
+    }
+
+    @GetMapping("/goUserInfo")
+    public String goUserInfo(Model model){
+        if(session.getAttribute("SESSION_INFO")==null)return "login";
+        UserDTO sessionUserDTO = (UserDTO)session.getAttribute("SESSION_INFO");
+        double userMoney = userService.getUserPayment(sessionUserDTO.getEmail());
+        model.addAttribute("userMoney",userMoney);
+        return "userInfo";
+    }
+
+    @GetMapping("/buyCoin")
+    public String  buyCoin(@RequestParam HashMap<String,String> buyInfo){
+        if(session.getAttribute("SESSION_INFO")==null)return "login";
+        UserDTO sessionUserDTO = (UserDTO)session.getAttribute("SESSION_INFO");
+        if (userService.buyCoin(buyInfo,sessionUserDTO.getEmail())){
+            System.out.println("buy success");
+        }
+        return "market";
     }
 
 }

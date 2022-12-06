@@ -1,6 +1,6 @@
 package com.example.bitcoinShopPractice.nonLoginFunction.controller;
 
-import com.example.bitcoinShopPractice.nonLoginFunction.service.functionService;
+import com.example.bitcoinShopPractice.nonLoginFunction.service.FunctionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.HashMap;
 
 @Controller
-public class functionController {
+public class FunctionController {
 
     @Autowired
-    functionService functionService;
+    FunctionService functionService;
 
     @PostMapping("/requestCall")
     public String requestCall(@RequestParam HashMap<String,String> requestInfo){
