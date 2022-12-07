@@ -4,32 +4,76 @@
 <mapper namespace="com.example.bitcoinShopPractice.mapper.UserMapper">
 
     <insert id="signup" parameterType="java.util.HashMap">
-        insert into member (email,password,name,phone,address,detail)
-        values((#{email}),(#{password}),(#{name}),(#{phone}),(#{address}),(#{addressDetail}));
+        INSERT INTO member
+        (email,
+         password,
+         NAME,
+         phone,
+         address,
+         detail)
+        VALUES     (( #{email} ),
+                    ( #{password} ),
+                    ( #{name} ),
+                    ( #{phone} ),
+                    ( #{address} ),
+                    ( #{addressDetail} ));
     </insert>
 
     <select id="login" parameterType="HashMap" resultType="HashMap">
-        select * from member where email= #{email} AND password = #{password}
+        SELECT *
+        FROM   member
+        WHERE  email = #{email}
+       AND password = #{password}
     </select>
 
     <insert id="charge" parameterType="HashMap">
-        insert into payment (email,amount,uid) values ((#{email}),(#{amount}),(#{uid}));
+        INSERT INTO payment
+        (email,
+         amount,
+         uid)
+        VALUES      (( #{email} ),
+                     ( #{amount} ),
+                     ( #{uid} ));
     </insert>
 
     <select id="getUserPayment" parameterType="String" resultType="long">
-        select SUM(amount) from payment where email=#{email}
+        SELECT Sum(amount)
+        FROM   payment
+        WHERE  email = #{email}
     </select>
     
     <insert id="buyCoin" parameterType="HashMap">
-        insert into coin (id,name,price,answer,email,amount,status) values ((#{id}),(#{name}),(#{price}),(#{answer}),(#{email}),(#{amount}),'buy');
+        INSERT INTO coin
+        (id,
+         NAME,
+         price,
+         answer,
+         email,
+         amount,
+         status)
+        VALUES      (( #{id} ),
+                     ( #{name} ),
+                     ( #{price} ),
+                     ( #{answer} ),
+                     ( #{email} ),
+                     ( #{amount} ),
+                     'buy');
     </insert>
 
     <select id="getBuyCoin" parameterType="String" resultType="double">
-        select SUM(amount) from coin where email=#{email} AND status ='buy'
+        SELECT Sum(amount)
+        FROM   coin
+        WHERE  email = #{email}
+       AND status = 'buy'
     </select>
     
     <select id="getUserCoinInfo" parameterType="String" resultType="HashMap">
-        select name , AVG(price), sum(answer) from coin where email=(#{email}) group by name;
+        SELECT NAME,
+               Avg(price),
+               Sum(answer)
+        FROM   coin
+        WHERE  email = ( #{email} )
+        GROUP  BY NAME;
     </select>
 
 </mapper>

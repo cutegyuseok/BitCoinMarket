@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
@@ -64,13 +65,24 @@ public class UserController {
     }
 
     @GetMapping("/buyCoin")
-    public String  buyCoin(@RequestParam HashMap<String,String> buyInfo){
+    public @ResponseBody String  buyCoin(@RequestParam HashMap<String,String> buyInfo){
         if(session.getAttribute("SESSION_INFO")==null)return "login";
         UserDTO sessionUserDTO = (UserDTO)session.getAttribute("SESSION_INFO");
         if (userService.buyCoin(buyInfo,sessionUserDTO.getEmail())){
             System.out.println("buy success");
+            return "success";
         }
-        return "market";
+        return "failed";
+    }
+
+    @GetMapping("/checkBalance")
+    public @ResponseBody String checkBalance(@RequestParam String total){
+        if(session.getAttribute("SESSION_INFO")==null)return "login";
+        UserDTO userDTO = (UserDTO)session.getAttribute("SESSION_INFO");
+        double doubleTotal = Double.valueOf(total);
+        if(userService.getUserPayment(userDTO.getEmail())>=doubleTotal){
+            return "can";
+        }else return "cannot";
     }
 
     @GetMapping("/goSell")

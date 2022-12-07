@@ -66,7 +66,7 @@ public class UserService {
         double amount =(answer*price);
         String result = String.valueOf(amount);
         buyInfo.put("amount",result);
-        if(getUserPayment(email)<amount){
+        if(getUserPayment(email)<amount) {
             return false;
         }
         try{
@@ -76,6 +76,8 @@ public class UserService {
             return false;
         }
     }
+
+
 
     public double getBuyCoin(String email){
         return userRepository.getBuyCoin(email);
