@@ -4,6 +4,7 @@ import com.example.bitcoinShopPractice.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 @Repository
@@ -36,4 +37,11 @@ public class UserRepository {
         return userMapper.getBuyCoin(email);
     }
 
+    public ArrayList<HashMap<String,Object>> selectUserPointHistory(String email){
+        return userMapper.selectUserPointHistory(email);
+    }
+
+    public ArrayList<HashMap<String,Object>> selectUserCoinHistory(String email){
+        return userMapper.selectUserCoinHistory(email);
+    }
 }

@@ -150,6 +150,7 @@
                             <form class="newslatter_form" action="subscribe">
                                 <input class="ente " placeholder="이메일 입력하기" th:if="${session.SESSION_INFO!=null}" th:value="${session.SESSION_INFO.getEmail()}" type="text " name="email">
                                 <input class="ente " placeholder="이메일 입력하기" th:unless="${session.SESSION_INFO!=null}" type="text " name="email">
+                                <input type="hidden" name="url" value="userInfo">
                                 <button class="subs_btn ">구독</button>
                             </form>
                         </div>

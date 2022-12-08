@@ -76,4 +76,18 @@
         GROUP  BY NAME;
     </select>
 
+    <select id="selectUserPointHistory" parameterType="string" resultType="HashMap">
+        select *
+        from payment
+        WHERE email = #{email}
+
+    </select>
+
+    <select id="selectUserCoinHistory" parameterType="string" resultType="HashMap">
+        select *
+        from coin
+        where email = #{email}
+        order by indate
+    </select>
+
 </mapper>

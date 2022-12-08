@@ -5,6 +5,7 @@ import com.example.bitcoinShopPractice.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 @Service
@@ -77,10 +78,16 @@ public class UserService {
         }
     }
 
-
-
     public double getBuyCoin(String email){
         return userRepository.getBuyCoin(email);
+    }
+
+    public ArrayList<HashMap<String,Object>> selectUserPointHistory(String email){
+        return userRepository.selectUserPointHistory(email);
+    }
+
+    public ArrayList<HashMap<String,Object>> selectUserCoinHistory(String email){
+        return userRepository.selectUserCoinHistory(email);
     }
 
 }

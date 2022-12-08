@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 
 @Controller
 public class UserController {
@@ -83,6 +85,20 @@ public class UserController {
         if(userService.getUserPayment(userDTO.getEmail())>=doubleTotal){
             return "can";
         }else return "cannot";
+    }
+
+    @GetMapping("/pointList")
+    public @ResponseBody ArrayList<HashMap<String,Object>> pointList(){
+        if(session.getAttribute("SESSION_INFO")==null)return null;
+        UserDTO userDTO = (UserDTO)session.getAttribute("SESSION_INFO");
+        return userService.selectUserPointHistory(userDTO.getEmail());
+    }
+
+    @GetMapping("/buyList")
+    public @ResponseBody ArrayList<HashMap<String,Object>> buyList(){
+        if(session.getAttribute("SESSION_INFO")==null)return null;
+        UserDTO userDTO = (UserDTO)session.getAttribute("SESSION_INFO");
+        return userService.selectUserCoinHistory(userDTO.getEmail());
     }
 
     @GetMapping("/goSell")

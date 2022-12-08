@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 
 @Mapper
 public interface UserMapper {
@@ -23,4 +24,7 @@ public interface UserMapper {
 
     public ArrayList<HashMap<String,String>> getUserCoinInfo(String email);
 
+    public ArrayList<HashMap<String,Object>> selectUserPointHistory(String email);
+
+    public ArrayList<HashMap<String,Object>> selectUserCoinHistory(String email);
 }

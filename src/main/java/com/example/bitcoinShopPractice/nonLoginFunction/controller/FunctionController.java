@@ -25,12 +25,13 @@ public class FunctionController {
     }
 
     @GetMapping("/subscribe")
-    public String subscribe(@RequestParam String email){
+    public String subscribe(@RequestParam HashMap<String,String> subscribe){
+       String email = subscribe.get("email");
+       String url = subscribe.get("url");
         if(functionService.subscribe(email)){
-            //subscribe Success alert
             System.out.println("subscribe Success");
         }
-        return "index";
+        return url;
     }
 
 }
