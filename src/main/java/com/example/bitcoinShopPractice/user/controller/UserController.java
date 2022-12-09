@@ -27,16 +27,22 @@ public class UserController {
     @PostMapping("/signup")
     public String signup(@RequestParam HashMap<String,String> userInfo){
         if(userService.signup(userInfo)){
-            return "index";
+            return "login";
         }else return "signup";
     }
 
     @PostMapping("/login")
     public String login(@RequestParam HashMap<String,String> userInfo){
         UserDTO userDTO = userService.login(userInfo);
+        String url="index";
+        if(session.getAttribute("SESSION_PRE_URL")!=null) {
+            url = session.getAttribute("SESSION_PRE_URL").toString();
+            url = "redirect:/" + url;
+            session.setAttribute("SESSION_PRE_URL",null);
+        }
         if(userDTO!=null){
         session.setAttribute("SESSION_INFO",userDTO);
-        return "index";
+        return url;
         }else {
             return "login";
         }
