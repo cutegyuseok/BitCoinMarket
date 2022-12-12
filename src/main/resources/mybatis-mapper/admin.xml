@@ -10,15 +10,25 @@
         AND password = #{password}
     </select>
     
-    <select id="cntMember" resultType="HashMap">
-        select count(*) cntMember from member
+    <select id="cntMember" resultType="int">
+        select count(*)
+        from member;
     </select>
 
-    <select id="amountPayment" resultType="HashMap">
-        select sum(amount) cntAmount
+    <select id="amountPayment" resultType="double">
+        select sum(amount)
         from payment;
     </select>
+    
+    <select id="selectCntBuy" resultType="int">
+        select count(*)
+        from coin;
+    </select>
 
+    <select id="selectCntContact" resultType="int">
+        select count(*)
+        from contact;
+    </select>
 
 
 </mapper>

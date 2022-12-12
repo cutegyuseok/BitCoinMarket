@@ -16,7 +16,19 @@ public class AdminService {
         return adminRepository.adminLogin(loginInfo);
     }
 
-    public HashMap<String,String> cntMember(){
+    public int cntMember(){
         return adminRepository.cntMember();
+    }
+
+    public double amountPayment(){
+        return adminRepository.amountPayment();
+    }
+
+    public int selectCntBuy(){
+        return adminRepository.selectCntBuy();
+    }
+
+    public int selectCntContact(){
+        return adminRepository.selectCntContact();
     }
 }

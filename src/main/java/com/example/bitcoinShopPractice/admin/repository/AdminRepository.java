@@ -16,7 +16,19 @@ public class AdminRepository {
         return adminMapper.adminLogin(loginInfo);
     }
 
-    public HashMap<String,String> cntMember(){
+    public int cntMember(){
         return adminMapper.cntMember();
+    }
+
+    public double amountPayment(){
+        return adminMapper.amountPayment();
+    }
+
+    public int selectCntBuy(){
+        return adminMapper.selectCntBuy();
+    }
+
+    public int selectCntContact(){
+        return adminMapper.selectCntContact();
     }
 }

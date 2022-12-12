@@ -9,5 +9,11 @@ public interface AdminMapper {
 
     public String adminLogin(HashMap<String,String> loginInfo);
 
-    public HashMap<String,String> cntMember();
+    public int cntMember();
+
+    public double amountPayment();
+
+    public int selectCntBuy();
+
+    public int selectCntContact();
 }
