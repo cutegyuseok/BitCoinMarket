@@ -56,6 +56,12 @@ public class PageController {
         return "market";
     }
 
+    @GetMapping("/goAdminPage")
+    public String goAdminPage(){
+        if(checkLoginStatus())return index();
+        return "adminLogin";
+    }
+
     public  boolean checkLoginStatus( ){
         if(session.getAttribute("SESSION_INFO")!=null){
             return true;

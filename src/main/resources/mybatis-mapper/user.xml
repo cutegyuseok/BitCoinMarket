@@ -64,7 +64,7 @@
         SELECT Sum(amount)
         FROM   coin
         WHERE  email = #{email}
-       AND status = 'buy'
+        AND status = 'buy'
     </select>
     
     <select id="getUserCoinInfo" parameterType="String" resultType="HashMap">
