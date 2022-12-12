@@ -59,20 +59,37 @@ public class PageController {
     @GetMapping("/goAdminPage")
     public String goAdminPage(){
         if(checkLoginStatus())return index();
-        if(session.getAttribute("ADMIN")!=null)return "adminIndex";
+        if(checkAdminStatus())return "adminIndex";
         return "adminLogin";
     }
 
     @GetMapping("/goMember")
     public String goMember(){
-        if(session.getAttribute("ADMIN")==null)return "index";
+        if(!checkAdminStatus())return "index";
         return "memberList";
     }
+
+    @GetMapping("/goPayment")
+    public String goPayment(){
+        if(!checkAdminStatus())return "index";
+        return "paymentList";
+    }
+
+
+
 
     public  boolean checkLoginStatus( ){
         if(session.getAttribute("SESSION_INFO")!=null){
             return true;
         }else return false;
+    }
+
+    public boolean checkAdminStatus(){
+        if (session.getAttribute("ADMIN")==null){
+            return false;
+        }else {
+            return true;
+        }
     }
 
 }

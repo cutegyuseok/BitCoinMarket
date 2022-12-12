@@ -36,4 +36,8 @@ public class AdminService {
     public ArrayList<HashMap<String,Object>> selectMember(){
         return adminRepository.selectMember();
     }
+
+    public ArrayList<HashMap<String,Object>> selectPayment(){
+        return adminRepository.selectPayment();
+    }
 }

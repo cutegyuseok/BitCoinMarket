@@ -35,6 +35,10 @@
         from member;
     </select>
 
+    <select id="selectPayment" resultType="HashMap">
+        select *
+        from payment;
+    </select>
 
 
 </mapper>

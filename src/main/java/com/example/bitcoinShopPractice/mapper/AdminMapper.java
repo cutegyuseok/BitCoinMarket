@@ -19,5 +19,6 @@ public interface AdminMapper {
     public int selectCntContact();
 
     public ArrayList<HashMap<String,Object>> selectMember();
+    public ArrayList<HashMap<String,Object>> selectPayment();
 
 }

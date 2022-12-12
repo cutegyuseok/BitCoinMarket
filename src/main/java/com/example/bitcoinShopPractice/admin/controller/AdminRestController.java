@@ -39,6 +39,11 @@ public class AdminRestController {
         return adminService.selectMember();
     }
 
+    @GetMapping("/selectPayment")
+    public ArrayList<HashMap<String,Object>> selectPayment(){
+        return adminService.selectPayment();
+    }
+
 
 
 
