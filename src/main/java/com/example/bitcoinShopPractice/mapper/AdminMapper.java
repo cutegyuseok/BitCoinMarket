@@ -21,4 +21,7 @@ public interface AdminMapper {
     public ArrayList<HashMap<String,Object>> selectMember();
     public ArrayList<HashMap<String,Object>> selectPayment();
 
+    public ArrayList<HashMap<String,Object>> selectBuy();
+
+
 }

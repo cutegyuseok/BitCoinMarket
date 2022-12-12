@@ -39,6 +39,11 @@
         select *
         from payment;
     </select>
+    
+    <select id="selectBuy" resultType="HashMap">
+        select *
+        from coin;
+    </select>
 
 
 </mapper>

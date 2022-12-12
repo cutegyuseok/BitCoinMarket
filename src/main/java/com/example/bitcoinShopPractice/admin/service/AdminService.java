@@ -40,4 +40,8 @@ public class AdminService {
     public ArrayList<HashMap<String,Object>> selectPayment(){
         return adminRepository.selectPayment();
     }
+
+    public ArrayList<HashMap<String,Object>> selectBuy(){
+        return adminRepository.selectBuy();
+    }
 }

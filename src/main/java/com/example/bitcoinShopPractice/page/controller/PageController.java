@@ -75,6 +75,12 @@ public class PageController {
         return "paymentList";
     }
 
+    @GetMapping("/goBuy")
+    public String goBuy(){
+        if(!checkAdminStatus())return "index";
+        return "buyList";
+    }
+
 
 
 

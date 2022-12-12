@@ -44,6 +44,11 @@ public class AdminRestController {
         return adminService.selectPayment();
     }
 
+    @GetMapping("/selectBuy")
+    public ArrayList<HashMap<String,Object>> selectBuy(){
+        return adminService.selectBuy();
+    }
+
 
 
 
