@@ -59,7 +59,14 @@ public class PageController {
     @GetMapping("/goAdminPage")
     public String goAdminPage(){
         if(checkLoginStatus())return index();
+        if(session.getAttribute("ADMIN")!=null)return "adminIndex";
         return "adminLogin";
+    }
+
+    @GetMapping("/goMember")
+    public String goMember(){
+        if(session.getAttribute("ADMIN")==null)return "index";
+        return "memberList";
     }
 
     public  boolean checkLoginStatus( ){
@@ -67,4 +74,5 @@ public class PageController {
             return true;
         }else return false;
     }
+
 }

@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 @RestController
@@ -33,6 +34,12 @@ public class AdminRestController {
     public int selectCntContact(){
         return adminService.selectCntContact();
     }
+    @GetMapping("/selectMember")
+    public ArrayList<HashMap<String,Object>> selectMember(){
+        return adminService.selectMember();
+    }
+
+
 
 
 }

@@ -4,6 +4,7 @@ import com.example.bitcoinShopPractice.mapper.AdminMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 @Repository
@@ -30,5 +31,9 @@ public class AdminRepository {
 
     public int selectCntContact(){
         return adminMapper.selectCntContact();
+    }
+
+    public ArrayList<HashMap<String,Object>> selectMember(){
+        return adminMapper.selectMember();
     }
 }

@@ -30,5 +30,11 @@
         from contact;
     </select>
 
+    <select id="selectMember" resultType="HashMap">
+        select *
+        from member;
+    </select>
+
+
 
 </mapper>

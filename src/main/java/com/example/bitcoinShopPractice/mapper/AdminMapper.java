@@ -2,6 +2,7 @@ package com.example.bitcoinShopPractice.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 @Mapper
@@ -16,4 +17,7 @@ public interface AdminMapper {
     public int selectCntBuy();
 
     public int selectCntContact();
+
+    public ArrayList<HashMap<String,Object>> selectMember();
+
 }
