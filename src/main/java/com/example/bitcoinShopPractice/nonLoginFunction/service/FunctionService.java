@@ -25,7 +25,6 @@ public class FunctionService {
         try {
             return functionRepository.subscribe(email)>0;
         }catch (Exception e){
-            e.printStackTrace();
             return false;
         }
     }

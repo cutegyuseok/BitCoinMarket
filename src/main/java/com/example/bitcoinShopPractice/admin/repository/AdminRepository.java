@@ -44,4 +44,11 @@ public class AdminRepository {
     public ArrayList<HashMap<String,Object>> selectBuy(){
         return adminMapper.selectBuy();
     }
+
+    public ArrayList<HashMap<String,Object>> selectSubscribe(){
+        return adminMapper.selectSubscribe();
+    }
+    public ArrayList<HashMap<String,Object>> selectContact(){
+        return adminMapper.selectContact();
+    }
 }

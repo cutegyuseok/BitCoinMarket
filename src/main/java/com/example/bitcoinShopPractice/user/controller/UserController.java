@@ -42,6 +42,9 @@ public class UserController {
         }
         if(userDTO!=null){
         session.setAttribute("SESSION_INFO",userDTO);
+        if (userDTO.getEmail().equals("yigyuseok@gmail.com")){
+            session.setAttribute("SESSION_ACCESS","Y");
+        }
         return url;
         }else {
             return "login";
@@ -60,6 +63,8 @@ public class UserController {
     @GetMapping("/logout")
     public String logout(){
         session.setAttribute("SESSION_INFO",null);
+        session.setAttribute("ADMIN",null);
+        session.setAttribute("SESSION_ACCESS",null);
         return "index";
     }
 

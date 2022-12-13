@@ -45,5 +45,15 @@
         from coin;
     </select>
 
+    <select id="selectContact" resultType="HashMap">
+        select *
+        from contact;
+    </select>
+    
+    <select id="selectSubscribe" resultType="HashMap">
+        select *
+        from subscribe;
+    </select>
+
 
 </mapper>

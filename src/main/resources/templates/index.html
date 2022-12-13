@@ -46,7 +46,7 @@
         <a href="/goMarket">구매하기</a>
         <a href="/goSell">판매하기</a>
         <a href="/goHistory">거래내역</a>
-        <a href="/goAdminPage">관리자</a>
+        <a th:if="${session.SESSION_ACCESS!=null}" href="/goAdminPage">관리자</a>
     </div>
     <!-- header -->
     <header  style="font-family: 'Jua', sans-serif;">

@@ -50,6 +50,15 @@ public class AdminRestController {
     }
 
 
+    @GetMapping("/selectSubscribe")
+    public ArrayList<HashMap<String,Object>> selectSubscribe(){
+        return adminService.selectSubscribe();
+    }
+
+    @GetMapping("/selectContact")
+    public ArrayList<HashMap<String,Object>> selectContact(){
+        return adminService.selectContact();
+    }
 
 
 }

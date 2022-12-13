@@ -23,5 +23,7 @@ public interface AdminMapper {
 
     public ArrayList<HashMap<String,Object>> selectBuy();
 
+    public ArrayList<HashMap<String,Object>> selectSubscribe();
+    public ArrayList<HashMap<String,Object>> selectContact();
 
 }
