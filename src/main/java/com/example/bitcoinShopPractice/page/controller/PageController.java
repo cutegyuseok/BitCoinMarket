@@ -1,5 +1,6 @@
 package com.example.bitcoinShopPractice.page.controller;
 
+import com.example.bitcoinShopPractice.aop.NoLogin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,16 +16,20 @@ public class PageController {
     @Autowired
     HttpSession session;
 
+    @NoLogin
     @GetMapping("/")
     public String index(){
         return "index";
     }
 
+    @NoLogin
     @GetMapping("/goSignup")
     public String goSignup(){
-        if(checkLoginStatus())return "index";
+        if(session.getAttribute("SESSION_INFO")!=null)return "index";
         return "signup";
     }
+
+    @NoLogin
     @GetMapping("/goLogin")
     public String goLogin(HttpServletRequest request){
         String referrer = request.getHeader("Referer").toString();
@@ -35,79 +40,25 @@ public class PageController {
                 session.setAttribute("SESSION_PRE_URL", referrer);
             }
         }
-        if (checkLoginStatus())return "index";
+        if(session.getAttribute("SESSION_INFO")!=null)return "index";
         return "login";
     }
 
     @GetMapping("/goPay")
     public String goPay(){
-        if(!checkLoginStatus())return "login";
         return "pay";
     }
 
     @GetMapping("/goHistory")
     public String goHistory(){
-        if(!checkLoginStatus())return "login";
         return "history";
     }
 
+    @NoLogin
     @GetMapping("/goMarket")
     public String goMarket(){
         return "market";
     }
 
-    @GetMapping("/goAdminPage")
-    public String goAdminPage(){
-        if(session.getAttribute("SESSION_ACCESS")==null)return "index";
-        if(checkAdminStatus())return "adminIndex";
-        return "adminLogin";
-    }
-
-    @GetMapping("/goMember")
-    public String goMember(){
-        if(!checkAdminStatus())return "index";
-        return "memberList";
-    }
-
-    @GetMapping("/goPayment")
-    public String goPayment(){
-        if(!checkAdminStatus())return "index";
-        return "paymentList";
-    }
-
-    @GetMapping("/goBuy")
-    public String goBuy(){
-        if(!checkAdminStatus())return "index";
-        return "buyList";
-    }
-
-    @GetMapping("/goContact")
-    public String goContact(){
-        if(!checkAdminStatus())return "index";
-        return "contactList";
-    }
-
-    @GetMapping("goSubscribe")
-    public String goSubscribe(){
-        if(!checkAdminStatus())return "index";
-        return "subscribeList";
-    }
-
-
-
-
-    public  boolean checkLoginStatus( ){
-        if(session.getAttribute("SESSION_INFO")!=null){
-            return true;
-        }else return false;
-    }
-
-    public boolean checkAdminStatus(){
-        if (session.getAttribute("ADMIN")==null){
-            return false;
-        }else {
-            return true;
-        }
-    }
 
 }
