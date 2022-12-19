@@ -1,5 +1,6 @@
 package com.example.bitcoinShopPractice.admin.service;
 
+import com.example.bitcoinShopPractice.admin.dto.AdminDTO;
 import com.example.bitcoinShopPractice.admin.repository.AdminRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,8 +14,11 @@ public class AdminService {
     @Autowired
     AdminRepository adminRepository;
 
-    public String adminLogin(HashMap<String,String> loginInfo){
-        return adminRepository.adminLogin(loginInfo);
+    public String adminLogin(AdminDTO dto){
+        HashMap<String,String> map = new HashMap<>();
+        map.put("id",dto.getId());
+        map.put("password",dto.getPassword());
+        return adminRepository.adminLogin(map);
     }
 
     public int cntMember(){
