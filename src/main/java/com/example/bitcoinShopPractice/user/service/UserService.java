@@ -1,6 +1,6 @@
 package com.example.bitcoinShopPractice.user.service;
 
-import com.example.bitcoinShopPractice.user.DTO.UserDTO;
+import com.example.bitcoinShopPractice.user.DTO.*;
 import com.example.bitcoinShopPractice.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,19 +14,28 @@ public class UserService {
     @Autowired
     UserRepository userRepository;
 
-    public boolean signup(HashMap<String, String> userInfo) {
-
+    public boolean signup(UserSignUpDTO dto) {
+        HashMap<String,String> map = new HashMap<>();
+        map.put("email",dto.getEmail());
+        map.put("name",dto.getName());
+        map.put("password",dto.getPassword());
+        map.put("phone",dto.getPhone());
+        map.put("address",dto.getAddress());
+        map.put("addressDetail",dto.getAddressDetail());
         try {
-            return userRepository.signup(userInfo)>0;
+            return userRepository.signup(map)>0;
 
         }catch (Exception e){
             return false;
         }
     }
 
-    public UserDTO login(HashMap<String,String> userInfo){
+    public UserDTO login(UserLoginDTO dto){
+        HashMap<String,String> map =new HashMap<>();
+        map.put("email",dto.getEmail());
+        map.put("password",dto.getPassword());
         try {
-            HashMap<String,String> user = userRepository.login(userInfo);
+            HashMap<String,String> user = userRepository.login(map);
             return new UserDTO(user.get("email"),user.get("name"),user.get("phone"),user.get("address"),user.get("detail"));
         }catch (Exception e){
             e.printStackTrace();
@@ -34,10 +43,13 @@ public class UserService {
         }
     }
 
-    public boolean charge(HashMap<String,String> chargeInfo,String email){
-        chargeInfo.put("email",email);
+    public boolean charge(PointInformationDTO dto, String email){
+        HashMap<String,String> map = new HashMap<>();
+        map.put("email",email);
+        map.put("amount",dto.getAmount());
+        map.put("uid",dto.getUid());
         try{
-            return userRepository.charge(chargeInfo)>0;
+            return userRepository.charge(map)>0;
         }catch (Exception e){
             e.printStackTrace();
             return false;
@@ -60,18 +72,16 @@ public class UserService {
         return userMoney;
     }
 
-    public boolean buyCoin(HashMap<String,String> buyInfo,String email){
-        buyInfo.put("email",email);
-        double price =Double.valueOf(buyInfo.get("price"));
-        double answer =Double.valueOf(buyInfo.get("answer"));
-        double amount =(answer*price);
-        String result = String.valueOf(amount);
-        buyInfo.put("amount",result);
-        if(getUserPayment(email)<amount) {
-            return false;
-        }
+    public boolean buyCoin(BuyInformationDTO dto, String email){
+        HashMap<String,String> map = new HashMap<>();
+        map.put("email",email);
+        map.put("price",dto.getPrice());
+        map.put("id",dto.getId());
+        map.put("name",dto.getName());
+        map.put("answer",dto.getAnswer());
+        map.put("amount",dto.getAmount());
         try{
-            return userRepository.buyCoin(buyInfo)>0;
+            return userRepository.buyCoin(map)>0;
         }catch (Exception e){
             e.printStackTrace();
             return false;

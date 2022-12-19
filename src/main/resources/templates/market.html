@@ -114,10 +114,10 @@
                                 url: "/buyCoin",
                                 data: {
                                     price: price,
-                                    coinId: id,
+                                    id: id,
                                     name: name,
-                                    amount: answer,
-                                    total: (answer * price)
+                                    answer: answer,
+                                    amount: (answer * price)
                                 },
                                 dataType: "json",
                                 complete: function () {

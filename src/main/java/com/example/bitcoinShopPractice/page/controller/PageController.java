@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import springfox.documentation.annotations.ApiIgnore;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -37,7 +38,7 @@ public class PageController {
     @ApiOperation(value = "로그인 페이지", notes = "로그인 페이지 접근")
     @NoLogin
     @GetMapping("/goLogin")
-    public String goLogin(HttpServletRequest request){
+    public String goLogin(@ApiIgnore HttpServletRequest request){
         String referrer = request.getHeader("Referer").toString();
         if(!referrer.contains("goLogin")
                 &&!referrer.contains("goSignup")){
