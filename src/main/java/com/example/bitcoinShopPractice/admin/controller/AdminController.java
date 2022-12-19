@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpSession;
 
-@Api(tags = {"관리자 페이지 서비스"},description = "관리자 관련 서비스")
+@Api(tags = {"관리자 접근 서비스"},description = "관리자 접근 관련 서비스")
 @Controller
 public class AdminController {
 
